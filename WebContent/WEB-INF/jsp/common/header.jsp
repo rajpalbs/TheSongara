@@ -4,10 +4,10 @@
 	<title>e-bolundra(songara)</title>
 	<!-- <link rel="shortcut icon" type="image/x-icon" href="style/images/favicon.png" /> -->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css" media="all" />
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css" media="all" />
 
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-ui..minjs"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ddsmoothmenu.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.jcarousel.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.prettyPhoto.js"></script>

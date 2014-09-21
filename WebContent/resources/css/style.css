@@ -222,7 +222,6 @@ h3 img {
 
 .intro {
 	font-family: 'Droid Serif', serif;
-	font-style: italic;
 	font-size: 17px;
 	color: #585858;
 	line-height: 24px;
@@ -245,7 +244,7 @@ ul {
 	margin-bottom: 20px;
 }
 ul li {
-	background: transparent url(style/images/bullet.png) left 8px no-repeat;
+	background: transparent url(../images/bullet.png) left 8px no-repeat;
 	padding-left: 15px;
 }
 ol {
@@ -563,8 +562,9 @@ textarea:focus{
 #menu {
 	float: left;
 	text-align: left;
-	font-family: 'Amaranth', sans-serif;
+	font-family: 'Droid Serif',serif;
 	font-size: 17px;
+	font-weight: bold;
 	/*margin-top: 40px;*/
 	margin-bottom: 50px;
 	position: relative;
@@ -654,6 +654,8 @@ textarea:focus{
 /*-----------------------------------------------------------------------------------*/
 
 #loginLocale{
+	font-family: 'Droid Serif',serif;
+	font-weight: bold;
 	padding-bottom: 10PX;
 	padding-top: 10PX;
 	width: 700px;
@@ -661,7 +663,7 @@ textarea:focus{
 }
 
 .localeAnchor{
-	font-family: 'Amaranth', sans-serif;
+	font-family: 'Droid Serif',serif;
 	font-size: 20px;
 }
 
@@ -800,7 +802,7 @@ html[xmlns] .slides {
 	width: 25px;
 	height: 25px;
 	display: block;
-	background: url(style/images/slider-controls.png) no-repeat 0 0;
+	background: url(../images/slider-controls.png) no-repeat 0 0;
 	position: absolute;
 	top: 50%;
 	margin-top: -12px;
@@ -842,7 +844,7 @@ html[xmlns] .slides {
 	width: 12px;
 	height: 12px;
 	display: block;
-	background: url(style/images/slider-navi.png) no-repeat 0 0;
+	background: url(../images/slider-navi.png) no-repeat 0 0;
 	cursor: pointer;
 	text-indent: 99999px;
 }
@@ -1664,7 +1666,7 @@ input[type=text]:focus, input[type=password]:focus,input[type=date]:focus,input[
 
 input[type=submit],button,input[type="button"]{/*taking all type of button into consideration */
   float: right;
-  font-family: 'Amaranth';
+  font-family: 'Droid Serif',serif;
   padding: 0 18px;
   height: 29px;
  /* font-size: 12px;
