@@ -14,10 +14,5 @@ public class HomeController {
 	public String showHomePageGET(){
 		log.info("Calling Home Page By:");
 		return "home";
-	}
-	
-	/*@RequestMapping(method=RequestMethod.POST)
-	public String showHomePagePOST(){
-		return "home";
-	}*/
+	}	
 }
