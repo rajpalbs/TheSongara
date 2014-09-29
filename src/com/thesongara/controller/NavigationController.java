@@ -12,5 +12,10 @@ static Logger log = Logger.getLogger(LoginController.class);
 	@RequestMapping(value = "/history.do", method = RequestMethod.GET)
 	public String showHistoryPage() {
 		return "history";
+	}
+	
+	@RequestMapping(value = "/aboutUs.do", method = RequestMethod.GET)
+	public String showAboutUsPage() {
+		return "aboutUs";
 	}	
 }

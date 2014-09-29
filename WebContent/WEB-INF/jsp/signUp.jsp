@@ -42,8 +42,8 @@ $(document).ready(function() {
 		});
 	});
 	$("[id^=contact]").keypress(function(event){
-		alert(this.id);
-		event.preventDefault();
+		//alert(this.id);
+		//event.preventDefault();
 	});
 });
 </script>
@@ -51,14 +51,14 @@ $(document).ready(function() {
  <div class="signUp" style="padding-left: 277px;padding-top: 25px;">
 	<form method="post" action="createUser.do">
 			<%-- Setting Username & Password --%>
-			<h2 style="color: #688dad;">User Details</h2>
+			<h1 class="colouredLabel">User Details</h1>
 			<div class="line"></div>
 			<ul>
    				<li><label class="colouredLabel">Username    </label>
-   					<input type="text" id="username" name="username" required pattern=".*\S+.*" maxlength="15">
+   					<input type="text" id="username" name="username" required pattern=".*\S+.*" maxlength="15" placeholder="usernam">
    					&nbsp; &nbsp;
    					<label class="colouredLabel">Password    </label>
-   					<input type="password" id="password" name="password" required maxlength="15">
+   					<input type="password" id="password" name="password" required maxlength="15" placeholder="password">
    				</li>
    			</ul>
 
@@ -66,11 +66,11 @@ $(document).ready(function() {
    			<br>
    			
    			<%-- Setting Contact & Other Details --%>
-   			<h2 style="color: #688dad;">Contact & Other Details</h2>
+   			<h1 class="colouredLabel">Contact & Other Details</h1>
 			<div class="line"></div>
 			<ul>		
 				<li><label class="colouredLabel">Name</label>
-					<input type="text" id="surname" name="surname" style="width: 136px; text-transform:uppercase;" placeholder="Surname" required maxlength="8">
+					<input type="text" id="surname" name="surname" style="width: 100px; text-transform:uppercase;" placeholder="Surname" required maxlength="8">
    					&nbsp;
    					<input type="text" id="firstName" name="firstName" style="text-transform:uppercase;" placeholder="Name" required maxlength="26">    					
    					<input type="text" id="lastName" name="lastName" style="text-transform:uppercase;" placeholder="Father/Husband's Name" required maxlength="26">
@@ -78,12 +78,12 @@ $(document).ready(function() {
    				<br>
    				<li><label class="colouredLabel">Contact Nos</label>
    					<input type="text" id="countryCode1" name="countryCode1" style="width: 25px" value="+91">
-					<input type="text" id="contact1" name="contact1" style="width: 192px" placeholder="Primary Phone Number" required maxlength="15">
+					<input type="text" id="contact1" name="contact1" style="width: 180px" placeholder="Primary Phone Number" required maxlength="15">
    					&nbsp;
    					<label class="colouredLabel">&</label>
    					&nbsp;
    					<input type="text" id="countryCode2" name="countryCode2" style="width: 25px" name="signUpCountryCode2" value="+91">
-					<input type="text" id="contact2" name="contact2" style="width: 192px" placeholder="Secondary Phone Number" maxlength="15">
+					<input type="text" id="contact2" name="contact2" style="width: 180px" placeholder="Secondary Phone Number" maxlength="15">
    				</li>
    				<br>
    				<li>
