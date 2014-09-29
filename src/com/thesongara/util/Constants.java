@@ -16,10 +16,6 @@ public class Constants {
 
 	public static final String DATE_PICKER = "MM/dd/yyyy";
 
-	/* Product Name Consonants */
-	public static final String AIR_PRODUCT = "Air";
-	public static final String INSURANCE_PRODUCT = "Insurance";
-
 	/* Ascending order Constant */
 	public static final String ASCENDING_ORDER = "asc";
 
@@ -30,24 +26,24 @@ public class Constants {
 
 	public static final String ROLE_MANAGER = "manager";
 
-	public static final String ROLE_AGENT = "agent";
-
-	// User Flight Network Vendor code for fees
-	public static final String PROVIDER_FOR_FEE = "FEE";
+	public static final String ROLE_USER = "user";
 
 	// Default database values
 	public static final String NONE = "none";
-
-	public static final String NO_SPECIAL_ASSITANCE = "No Special Assistance";
-
-	/* Manual booking Services */
-	public static final String LOCALHOST = "localhost";
-	public static final String LOCAL_IP = "127.0.0.1";
-	public static final String MANUAL_BOOKING = "Manual-Booking";
-	public static final String LANGUAGE = "EN";
-
-	public static final String PDP_UNLIMITED = "Unlimited";
-	
+		
 	public static final SimpleDateFormat SDF = new SimpleDateFormat(Constants.SQL_DATE);
+	
+	//Mobile Number Related Constants
+	public static final String MOBILE_NUMBER_SAPARATOR= "#";
+	public static final String COUNTRYCODE_MOBILE_NUMBER_SAPARATOR="-";
+	public static final String INDIA_COUNTRY_CODE="91";
 
+	//SMS Related Constants
+	public static final String SMS_URL_HEAD="http://premiumsms.highspeedsms.com/sendsms.jsp?user=rajpal&password=rajpal";
+	public static final String SMS_MOBILE_NUMBERS="mobiles=";
+	public static final String SMS_CONTENT="sms=";
+	public static final String SMS_URL_TAIL="unicode=UTF-8&senderid=SONGRA&version=3";
+	
+	
+	public static final String CHAR_AMPERCENT="&";
 }

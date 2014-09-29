@@ -1,5 +1,7 @@
 package com.thesongara.model.questionanswer;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -17,6 +19,9 @@ public class Answer extends BaseEntity {
 
 	@Column(name = "answer")
 	private String answer;
+	
+	@Column(name="answer_date")
+	private Date answerDate;
 
 	@ManyToOne
 	@JoinColumn(name = "question_id", referencedColumnName = "id", nullable = false)
@@ -32,6 +37,14 @@ public class Answer extends BaseEntity {
 
 	public void setAnswer(String answer) {
 		this.answer = answer;
+	}
+	
+	public Date getAnswerDate() {
+		return answerDate;
+	}
+
+	public void setAnswerDate(Date answerDate) {
+		this.answerDate = answerDate;
 	}
 
 	public Question getQuestion() {

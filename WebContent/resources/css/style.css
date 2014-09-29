@@ -207,6 +207,10 @@ img.attachment {
 	margin: 0 auto;
 }
 
+.centerText {
+	text-align: center;
+}
+
 h3 img {
 	vertical-align: middle;
 	padding-right: 10px;
@@ -244,7 +248,7 @@ ul {
 	margin-bottom: 20px;
 }
 ul li {
-	background: transparent url(../images/bullet.png) left 8px no-repeat;
+	/* background: transparent url(../images/bullet.png) left 8px no-repeat; */
 	padding-left: 15px;
 }
 ol {
@@ -654,7 +658,7 @@ textarea:focus{
 /*-----------------------------------------------------------------------------------*/
 
 #loginLocale{
-	font-family: 'Droid Serif',serif;
+	font-family: Droid Serif,serif;
 	font-weight: bold;
 	padding-bottom: 10PX;
 	padding-top: 10PX;
@@ -663,8 +667,33 @@ textarea:focus{
 }
 
 .localeAnchor{
-	font-family: 'Droid Serif',serif;
+	font-family: Droid Serif,serif;
 	font-size: 20px;
+}
+
+
+/* ---------------------------------------------------------------------------------*/
+/* MEMBERS                                                                          */
+/* ---------------------------------------------------------------------------------*/
+#memdiv{
+	width: 700px;
+	float: right;
+	font-family: Droid Serif,serif;
+}
+
+/* ----------------------------------------------------------------------------------*/
+/* QUESTION & ANSWER SECTION                                                         */
+/* ----------------------------------------------------------------------------------*/
+#questionAnswerDiv{
+	width: 700px;
+	float: right;
+	font-family: Droid Serif,serif;
+}
+
+#sendSMSDiv{
+	width: 700px;
+	float: right;
+	font-family: Droid Serif,serif;
 }
 
 /*-----------------------------------------------------------------------------------*/

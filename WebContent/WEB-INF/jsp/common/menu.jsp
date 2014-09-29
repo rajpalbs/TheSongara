@@ -18,7 +18,7 @@
     		<li><a href="showAllUsers.do" class="active"><spring:message code="label.contact_members"/></a></li>
     		<%-- <li><a href="showAllUsers.do" class="active"><spring:message code="label.documents"/></a></li> --%>
     		<li><a href="discussion.do" class="active"><spring:message code="label.discussion"/></a></li>
-    		<li><a href="showAllUsers.do" class="active"><spring:message code="label.recentActivity"/></a></li>
+    		<li><a href="sendSMS.do" class="active"><spring:message code="label.sendsms"/></a></li>
     		<li><a href="showAllUsers.do" class="active"><spring:message code="label.contactUs"/></a></li>
     		<li><a href="showAllUsers.do" class="active"><spring:message code="label.aboutUs"/></a></li>
     		<%-- <li><a href="showAllUsers.do" class="active"><spring:message code="label.siteMap"/></a></li> --%>

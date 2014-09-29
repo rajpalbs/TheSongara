@@ -13,7 +13,7 @@ $(function(){
 });
 
 </script>
-<div id="memdiv" style="padding-left: 277px; font-family: amaranth;">
+<div id="memdiv">
 	<form action="activateUser.do" method="post">
 	
 	<c:forEach items="${allUsers}" var="user" varStatus="status" >

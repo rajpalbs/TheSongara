@@ -26,7 +26,8 @@ public class UserAccountTransformer {
 				userAccountDTO.setCountryCode1(userAccount.getPhoneNo1().split("-")[0]);
 				userAccountDTO.setContact1(userAccount.getPhoneNo1().split("-")[1]);
 			}
-			userAccountDTO.setPhoneNo1(userAccount.getPhoneNo1()==null ? "" : userAccount.getPhoneNo1());
+			//TODO : here if phone no is null than if we put "" it gives null-null so make it " " please work on it.
+			userAccountDTO.setPhoneNo1(userAccount.getPhoneNo1() == null ? " " : userAccount.getPhoneNo1());
 			
 			if(userAccount.getPhoneNo2() != null){
 				userAccountDTO.setCountryCode2(userAccount.getPhoneNo2().split("-")[0]);
@@ -36,10 +37,8 @@ public class UserAccountTransformer {
 			
 			userAccountDTO.setEmail(userAccount.getEmailAddress()==null ? "" : userAccount.getEmailAddress());
 			userAccountDTO.setAddress(userAccount.getAddress()==null ? "" : userAccount.getAddress());
-			userAccountDTO.setAboutMe(userAccount.getAboutMe()==null ? "" : userAccount.getAboutMe());
-			
+			userAccountDTO.setAboutMe(userAccount.getAboutMe()==null ? "" : userAccount.getAboutMe());			
 		}
 		return userAccountDTO;
 	}
-
 }
