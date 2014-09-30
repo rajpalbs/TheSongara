@@ -22,7 +22,8 @@
 	
 	<!-- Loads persistance related beans -->	
 	<import resource="the-songara-persistence-context.xml"/>
-	
+	<import resource="the-songara-spring-security.xml"/>
+		
 	<!-- GO THROUGH BELOW LINK ITS A VERY GOOD AND ALSO HAVE SOME OTHER STUFF ALSO.  
 	http://www.codingpedia.org/ama/spring-3-mvc-internationalization-localization-of-podcastpedia-org/
 	-->
