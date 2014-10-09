@@ -12,7 +12,7 @@ public class HomeController {
 	
 	@RequestMapping(value={"/","home.do"}, method=RequestMethod.GET)
 	public String showHomePageGET(){
-		log.info("Calling Home Page By:");
+		log.info("Home Page");
 		return "home";
 	}	
 }

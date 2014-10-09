@@ -16,7 +16,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.masonry.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.slickforms.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/scripts.js"></script>
-	
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/thesongara.js"></script>
 </head>
 
 <body>

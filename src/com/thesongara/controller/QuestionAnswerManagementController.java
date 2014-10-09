@@ -21,7 +21,10 @@ import com.thesongara.model.questionanswer.Question;
 import com.thesongara.model.user.UserAccount;
 import com.thesongara.service.questionanswer.IAnswerService;
 import com.thesongara.service.questionanswer.IQuestionService;
+import com.thesongara.service.user.IUserAccountService;
 import com.thesongara.transformer.QuestionAnswerDetailDTOTransformer;
+import com.thesongara.util.CommonUtility;
+import com.thesongara.util.Constants;
 import com.thesongara.util.DateTimeUtils;
 
 @Controller
@@ -32,11 +35,14 @@ public class QuestionAnswerManagementController {
 	
 	@Autowired
 	private IAnswerService answerService;
-	
+
+	@Autowired
+	private IUserAccountService userAccountService;
 	
 	@RequestMapping(value = "/postQuestion.do", method = RequestMethod.POST)
 	public String postQuestion(HttpServletRequest request) {
-		UserAccount account = (UserAccount) request.getSession(false).getAttribute("userAccount");
+		String userName = CommonUtility.getLoggedInUserContext() == null ? Constants.ROLE_GUEST : CommonUtility.getLoggedInUserContext().getUsername();
+		UserAccount account = userAccountService.getUserAccountByUsername(userName);
 		if(account != null){
 			questionService.SaveQuestion(account.getUsername(), request.getParameter("question"));
 		}
@@ -53,15 +59,16 @@ public class QuestionAnswerManagementController {
 	
 	@RequestMapping(value = "/putAnswer.do", method = RequestMethod.GET)
 	public @ResponseBody AnswerDTO postAnswer(HttpServletRequest request){
-		UserAccount account = (UserAccount) request.getSession(false).getAttribute("userAccount");
+		String userName = CommonUtility.getLoggedInUserContext() == null ? Constants.ROLE_GUEST : CommonUtility.getLoggedInUserContext().getUsername();
+		UserAccount account = userAccountService.getUserAccountByUsername(userName);
 		if(account != null){
 			Question question = questionService.getQuestionById(Long.parseLong(request.getParameter("questionId")));
 			answerService.saveAnswer(account, question, request.getParameter("answer"));
 		}
 		AnswerDTO answerDTO = new AnswerDTO();
 		answerDTO.setAnswer(request.getParameter("answer"));
-		answerDTO.setAnswerGivenBy(account.getUsername());
-		answerDTO.setAnswerDate(DateTimeUtils.changeDateFormat("E MMM dd hh:mm:ss Z yyyy", "dd/MM/yyyy, hh:mma", new Date()));
+		answerDTO.setAnswerGivenBy(userName);
+		answerDTO.setAnswerDate(DateTimeUtils.changeDateFormatISTTimeZone("E MMM dd hh:mm:ss Z yyyy", "dd/MM/yyyy, hh:mma", new Date()));
 		return answerDTO;
 	}
 }

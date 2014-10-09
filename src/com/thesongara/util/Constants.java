@@ -22,12 +22,14 @@ public class Constants {
 	/* Descending order Constant */
 	public static final String DESCENDING_ORDER = "desc";
 
-	public static final String ROLE_ADMIN = "admin";
+	public static final String ROLE_ADMIN = "ADMIN";
 
-	public static final String ROLE_MANAGER = "manager";
+	public static final String ROLE_MANAGER = "MANAGER";
 
-	public static final String ROLE_USER = "user";
-
+	public static final String ROLE_USER = "USER";
+	
+	public static final String ROLE_GUEST = "GUEST";
+	
 	// Default database values
 	public static final String NONE = "none";
 		

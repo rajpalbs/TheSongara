@@ -1,5 +1,6 @@
 package com.thesongara.dto.user;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -137,5 +138,26 @@ public class TheSongaraUserDTO implements UserDetails {
 		return (StringUtils.isNotBlank(firstname) ? firstname + " " : "")
 				+ (StringUtils.isNotBlank(lastname) ? lastname : "").trim();
 	}
-
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("TheSongaraUserDTO [userAccountId=");
+		builder.append(userAccountId);
+		builder.append(", username=");
+		builder.append(username);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", firstname=");
+		builder.append(firstname);
+		builder.append(", lastname=");
+		builder.append(lastname);
+		builder.append(", authorities=");
+		builder.append(Arrays.toString(authorities));
+		builder.append(", active=");
+		builder.append(active);
+		builder.append(", roles=");
+		builder.append(roles);
+		builder.append("]");
+		return builder.toString();
+	}
 }

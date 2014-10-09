@@ -15,6 +15,7 @@ import com.thesongara.dao.security.ICustomUserDetailsDAO;
 import com.thesongara.dao.user.IUserAccountDAO;
 import com.thesongara.dao.user.IUserRoleDAO;
 import com.thesongara.dto.user.TheSongaraUserDTO;
+import com.thesongara.model.user.UserAccount;
 import com.thesongara.model.user.UserRole;
 import com.thesongara.util.CommonUtility;
 
@@ -34,8 +35,7 @@ public class CustomUserDetailsDAO implements ICustomUserDetailsDAO {
 		String[] columnNames = new String[] { "username", "active" };
 		Object[] columnValues = new Object[] { username, true};
 
-		com.thesongara.model.user.UserAccount userAccount = userAccountDAO
-				.getSafeSingleEntityByColumnAndValue(columnNames, columnValues);
+		UserAccount userAccount = userAccountDAO.getSafeSingleEntityByColumnAndValue(columnNames, columnValues);
 
 		List<UserRole> userRoles = null;
 		List<String> roleList = new ArrayList<String>();
@@ -50,6 +50,7 @@ public class CustomUserDetailsDAO implements ICustomUserDetailsDAO {
 				, username, userAccount.getPassword(),
 				userAccount.getActive(), getAuthoritiesForUser(roleList),
 				roleList);
+		System.out.println("user : "+user);
 
 		return user;
 	}

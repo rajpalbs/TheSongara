@@ -19,6 +19,7 @@ import com.thesongara.dto.user.ChangePasswordDTO;
 import com.thesongara.dto.user.UserAccountDTO;
 import com.thesongara.model.user.UserAccount;
 import com.thesongara.service.user.IUserAccountService;
+import com.thesongara.util.CommonUtility;
 import com.thesongara.util.DateFormatter;
 import com.thesongara.util.DateTimeUtils;
 
@@ -43,6 +44,18 @@ public class UserManagementController {
 		}
 		return true;
 	}
+	
+	@RequestMapping(value = "/checkPassword.do", method = RequestMethod.GET)
+	public @ResponseBody Boolean checkPassword(@RequestParam String password){
+		UserAccount userAccount = CommonUtility.getLoggedInUserContext() == null ? null : 
+			userAccountService.getUserAccountByUsername(
+					CommonUtility.getLoggedInUserContext().getUsername());
+		if(userAccount != null && password.equals(userAccount.getPassword())){
+			return false;
+		}
+		return true;
+	}
+	
 	
 
 	@RequestMapping(value = "/createUser.do", method = RequestMethod.POST)
@@ -96,31 +109,38 @@ public class UserManagementController {
 	
 	@RequestMapping(value="/changePassword.do",method=RequestMethod.GET)
 	public String changePassword(HttpServletRequest request,ModelMap map){
-		if(null == request.getSession().getAttribute("userAccount")){
+		if(null == CommonUtility.getLoggedInUserContext()){
 			return "redirect:/home.do";
 		}
 		return "changePassword";
 	}
+	
 	@RequestMapping(value="/saveChangePassword.do",method=RequestMethod.POST)
 	public String saveChangePassword(HttpServletRequest request,ChangePasswordDTO changePasswordDTO,ModelMap map){
 		if(StringUtils.isNotEmpty(changePasswordDTO.getOldPassword())){
-			UserAccount userAccount = (UserAccount) request.getSession().getAttribute("userAccount");
-			if(!userAccount.equals(changePasswordDTO.getOldPassword())){
+			UserAccount userAccount = CommonUtility.getLoggedInUserContext() == null ? null : 
+										userAccountService.getUserAccountByUsername(
+												CommonUtility.getLoggedInUserContext().getUsername());
+			if(userAccount != null){
 				userAccount.setPassword(changePasswordDTO.getNewPassword());
 				userAccountService.update(userAccount);
 				map.put("message", "Password Changes Successfully.");
 			}
-			return "redirect:/home.do";
 		}
 		return "redirect:/home.do";
 	}
 	
 	@RequestMapping(value="/editProfile.do",method=RequestMethod.GET)
 	public String editProfile(HttpServletRequest request, ModelMap map){
-		if(null == request.getSession().getAttribute("userAccount")){
+		
+		UserAccount userAccount = CommonUtility.getLoggedInUserContext() == null ? null : 
+			userAccountService.getUserAccountByUsername(
+					CommonUtility.getLoggedInUserContext().getUsername());
+		
+		if(null == userAccount){
 			return "redirect:/home.do";
 		}
-		UserAccountDTO userAccountDTO = userAccountService.getDTO((UserAccount)request.getSession().getAttribute("userAccount"));
+		UserAccountDTO userAccountDTO = userAccountService.getDTO(userAccount);
 		map.put("userAccountDTO", userAccountDTO);
 		return "editProfile";
 		
@@ -128,8 +148,10 @@ public class UserManagementController {
 	
 	@RequestMapping(value="/saveEditProfile.do",method=RequestMethod.POST)
 	public String saveEditProfile(HttpServletRequest request, UserAccountDTO userAccountDTO, ModelMap map){
-		UserAccount userAccount =  (UserAccount)request.getSession().getAttribute("userAccount");
-		if(userAccount !=null){
+		UserAccount userAccount = CommonUtility.getLoggedInUserContext() == null ? null : 
+			userAccountService.getUserAccountByUsername(
+					CommonUtility.getLoggedInUserContext().getUsername());
+		if(userAccount != null ){
 			userAccount.setFullName(userAccountDTO.getFullName());
 			userAccount.setPhoneNo1(userAccountDTO.getPhoneNo1());
 			userAccount.setPhoneNo2(userAccountDTO.getPhoneNo2());

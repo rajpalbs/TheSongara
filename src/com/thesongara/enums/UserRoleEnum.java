@@ -2,7 +2,7 @@ package com.thesongara.enums;
 
 public enum UserRoleEnum {
 
-	ADMIN("ADMIN"), MANAGER("MANAGER"), USER("USER");
+	ADMIN("ADMIN"), MANAGER("MANAGER"), USER("USER"), GUEST("GUEST");
 
 	private String roleName;
 

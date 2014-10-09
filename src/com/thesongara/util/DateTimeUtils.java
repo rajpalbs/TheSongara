@@ -8,6 +8,7 @@ package com.thesongara.util;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 import org.joda.time.DateTime;
 import org.joda.time.Minutes;
@@ -47,6 +48,13 @@ public class DateTimeUtils {
 	public static String changeDateFormat(String fromPattern,String toPattern,Date date){
 		SimpleDateFormat sdf = new SimpleDateFormat(fromPattern);
 		sdf.applyPattern(toPattern);
+		return sdf.format(date);
+	}
+	
+	public static String changeDateFormatISTTimeZone(String fromPattern,String toPattern,Date date){
+		SimpleDateFormat sdf = new SimpleDateFormat(fromPattern);
+		sdf.applyPattern(toPattern);
+		sdf.setTimeZone(TimeZone.getTimeZone("EST"));
 		return sdf.format(date);
 	}
 }

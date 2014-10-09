@@ -31,6 +31,7 @@ public class SendSMS implements ISendSMS {
 	      String line = "";
 	      while ((line = rd.readLine()) != null) {
 	    	  //LOG THE RESPONSE IN FILE.
+	    	  System.out.println(line);
 	      }
 	    }catch(Exception e){
 	    	e.printStackTrace();

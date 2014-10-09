@@ -110,7 +110,7 @@ public class UserAccountService implements IUserAccountService {
 		if (toActivate && userAccount.getUserRole() == null) {
 			userRoleService.saveUserRole(UserRoleEnum.USER, userAccount);
 		}
-		log.debug("Activate The User Account =" + username);
+		log.debug("Activate The User Account = " + username);
 	}
 	
 	@Override

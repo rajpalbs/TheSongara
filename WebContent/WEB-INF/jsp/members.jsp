@@ -17,8 +17,6 @@ $(function(){
 	<form action="activateUser.do" method="post">
 	
 	<c:forEach items="${allUsers}" var="user" varStatus="status" >
-		<c:if test="${user.active || sessionScope.userAccount.userRole.roleEnum eq 'ADMIN'}">
-		
 		<div class="head" style="cursor:pointer;">
 			<label class="colouredLabel" style="cursor: pointer;">${user.fullName}</label>
 		</div>
@@ -43,7 +41,7 @@ $(function(){
 			${user.aboutMe}
 			<br>
 			<br>
-    		<c:if test="${sessionScope.userAccount.userRole.roleEnum eq 'ADMIN'}">
+    		<c:if test="${not empty  userDTO && userDTO.roles.contains('ADMIN')}">
     			<%-- For Active/Deactive Account --%>
     			<c:choose>
     				<c:when test="${user.active}">
@@ -59,10 +57,9 @@ $(function(){
     		</c:if>
 		</div>
 		<br>
-		</c:if>
 	</c:forEach>
-	<c:if test="${sessionScope.userAccount.userRole.roleEnum eq 'ADMIN'}">
-				<input type="submit" id="activateUser" name="activateUser" value="activateUser">
+	<c:if test="${not empty  userDTO && userDTO.roles.contains('ADMIN')}">
+				<input type="submit" id="activateUser" name="activateUser" value="Apply Changes">
 	</c:if>
 	</form>
 </div>

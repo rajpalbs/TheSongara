@@ -80,20 +80,19 @@ $(document).ready(function() {
 
 
 <div id="questionAnswerDiv">
-	<div id="postQuestionDiv" style="float: right;">
-		<button id="postQuestionBtn" name="postQuestionBtn">Start New Discussion.</button>	
-	</div>
-	<br><br><br><br>
+	<c:if test="${not empty  userDTO}"> 
+		<div id="postQuestionDiv" style="float: right;">
+			<button id="postQuestionBtn" name="postQuestionBtn">Start New Discussion.</button>	
+		</div>
+	</c:if>
+	<br/><br/><br/><br/><br/><br/>
 	<img src="${pageContext.request.contextPath}/resources/images/loader.gif" alt="Loading" class="loading-gif" style="display:none"/>		
 	<c:forEach items="${resultDTO}" var="resultMap" varStatus="i">
 		<div class="head" style="cursor:pointer;">
 			<label class="colouredLabel" style="cursor: pointer;">${resultMap.key.question}</label>
 			- By <label style="color: #688dad;font-size: 15px;">${resultMap.key.questionAskedBy}</label>
 			- On <label style="color: #688dad;font-size: 15px;">${resultMap.key.postedDate}</label>
-			<%--
-			 Later pahse. --%>
-			 <label style="color: #688dad;font-size: 15px;float:right;">${resultMap.key.noOfAnswer}</label>
-			
+			<label style="color: #688dad;font-size: 15px;float:right;">${resultMap.key.noOfAnswer}</label>
 		</div>
 		<div class="row" style="display: none; font-size: 15px;">
 			<c:forEach items="${resultMap.value}" var="answerList" varStatus="j">
@@ -109,12 +108,12 @@ $(document).ready(function() {
 			<div id="divPostAnswer${resultMap.key.questionId}">		
 				<input type="hidden" value="${resultMap.key.questionId}" name="questionId">	
 				&nbsp;&nbsp;&nbsp;<textarea id="answer${resultMap.key.questionId}" name="answer" style="white-space: pre-wrap;width: 650px; height: 50px;" placeholder="Write Your View Here."></textarea>
-				<br>
+				<br/><br/>
 				<div style="float: left;">&nbsp;&nbsp;&nbsp;
 					<button id="postAnswer${resultMap.key.questionId}" name="postAnswer">Post Answer</button>
 				</div>
 			</div>
-			<br><br><br>
+			<br/><br/><br/>
 		</div>
 		<br>
 	</c:forEach>

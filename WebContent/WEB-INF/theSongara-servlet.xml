@@ -42,5 +42,7 @@
 			<property name="paramName" value="language" />
 		</bean>
 	</mvc:interceptors>
+
+    <security:global-method-security secured-annotations="enabled" access-decision-manager-ref="accessDecisionManager" />	 
 	
 </beans>

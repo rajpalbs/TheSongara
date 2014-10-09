@@ -8,12 +8,17 @@
 	id="WebApp_ID" 
 	version="3.0">
 	
-  <display-name> The Songara ... </display-name>
+  <display-name> The Songara </display-name>
   
   	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/the-songara-application-context.xml</param-value>
+		<param-value>/WEB-INF/spring/the-songara-*.xml</param-value>
 	</context-param>
+	<!-- Spring Context Listener -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
  	<!-- Spring Dispatcher servlet -->
   	<servlet>
 		<servlet-name>theSongara</servlet-name>
@@ -35,47 +40,33 @@
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
 
-	<!-- Spring Context Listener -->
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+
+	<!-- =============== Spring Security ====================================== -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy
+		</filter-class>
+	</filter>
+ 	
+ 	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	
-	<filter>
-    	<filter-name>characterEncodingFilter</filter-name>
-    	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-    	<init-param>
-	        <param-name>encoding</param-name>
-        	<param-value>UTF-8</param-value>
-    	</init-param>
-    	<init-param>
-	        <param-name>forceEncoding</param-name>
-        	<param-value>true</param-value>
-    	</init-param>
-	</filter>
-	<filter-mapping>
-    	<filter-name>characterEncodingFilter</filter-name>
-    	<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
-	<!-- ===================== i18n configurations =============================================== -->
-	<filter>
-    	<filter-name>localizationFilter</filter-name>
-    	<filter-class>org.springframework.web.filter.RequestContextFilter</filter-class>
-	</filter>
-	<filter-mapping>
-    	<filter-name>localizationFilter</filter-name>
-    	<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
+	<!-- ==============  ERROR HANDLING =======================================-->
 	<error-page>
-	<error-code>500</error-code>
+		<error-code>500</error-code>
 	<!-- <exception-type>com.thesongara.exception.BaseException</exception-type> -->
-	<location>/error.jsp</location>
+		<location>/error.jsp</location>
 	</error-page>
 	
   	<error-page>
-	<error-code>404</error-code>
+		<error-code>404</error-code>
 	<!-- <exception-type>com.thesongara.exception.BaseException</exception-type> -->
-	<location>/error1.jsp</location>
+		<location>/error1.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/denied.jsp</location>
 	</error-page>
 </web-app>

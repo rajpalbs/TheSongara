@@ -33,6 +33,7 @@ public class AnswerService implements IAnswerService {
 		answer.setAnswer(strAnswer);
 		answer.setQuestion(question);
 		answer.setUser(account);
+		//TODO : answer with timezone
 		answer.setAnswerDate(new Date());
 		answerDAO.save(answer);
 	}

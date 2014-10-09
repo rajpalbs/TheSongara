@@ -1,0 +1,5 @@
+Remember Me Functionality.
+Generate SchemaSpy Diagram in put in into .../TheSongara/developer/databasedesign/... .html.
+put answer in IST timezone(check wheather possible through MySQL side).
+import contact functionality(write procedure on database side).
+Event & Activity(After Release).
