@@ -1,6 +1,8 @@
 package com.thesongara.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.thesongara.dto.user.ActivateUserAccountDTO;
 import com.thesongara.dto.user.ChangePasswordDTO;
 import com.thesongara.dto.user.UserAccountDTO;
+import com.thesongara.mail.EmailSender;
 import com.thesongara.model.user.UserAccount;
 import com.thesongara.service.user.IUserAccountService;
 import com.thesongara.util.CommonUtility;
@@ -30,6 +33,9 @@ public class UserManagementController {
 	
 	@Autowired
 	private IUserAccountService userAccountService;
+	
+	@Autowired
+	private EmailSender emailSender;
 	
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
 	public String createUserAcccount() {
@@ -59,8 +65,7 @@ public class UserManagementController {
 	
 
 	@RequestMapping(value = "/createUser.do", method = RequestMethod.POST)
-	public String saveUserAcccount(UserAccountDTO userAccountDTO) {
-		
+	public String saveUserAcccount(UserAccountDTO userAccountDTO) {	
 		userAccountService.createUserAcount(
 				userAccountDTO.getUsername(),
 				userAccountDTO.getPassword(),
@@ -71,7 +76,7 @@ public class UserManagementController {
 				userAccountDTO.getEmail(),
 				userAccountDTO.getAddress(),
 				userAccountDTO.getAboutMe()
-		);		
+		);	
 		return "signUpSuccess";
 	}
 	
@@ -96,6 +101,12 @@ public class UserManagementController {
 		if(activateUserAccountDTO.getActivate() != null){
 			for(int i=0; i<activateUserAccountDTO.getActivate().length; i++){
 				userAccountService.activateDeactivateUserAccount(activateUserAccountDTO.getActivate()[i],Boolean.TRUE);
+				UserAccount userAccount = userAccountService.getUserAccountByUsername(activateUserAccountDTO.getActivate()[i]);
+				if(StringUtils.isNotEmpty(userAccount.getEmailAddress())){
+					Map<String,Object> data = new HashMap<String,Object>();
+					data.put("fullName",userAccount.getFullName());
+					emailSender.sendEmail(userAccount.getEmailAddress(),"Account Created","templates/welcome.vm",data);
+				}
 			}
 		}
 		//Deactivate

@@ -36,7 +36,7 @@ public class SMSController {
 	@RequestMapping(value = "/sendSMS.do", method = RequestMethod.POST)
 	public String sendSMS(ModelMap map,SendSMSDTO sendSMSDTO){
 		sendSMS.send(sendSMSDTO);
-		return "sendSMS"; 
+		return "redirect:/sendSMS.do";
 	}
 
 }

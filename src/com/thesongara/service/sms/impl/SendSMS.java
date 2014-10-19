@@ -2,6 +2,8 @@ package com.thesongara.service.sms.impl;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -52,13 +54,18 @@ public class SendSMS implements ISendSMS {
 			}
 		}
 		String mobileNumbers = StringUtils.join(mobileNumberSet, ',');
-		String URL = Constants.SMS_URL_HEAD+
-				 Constants.CHAR_AMPERCENT+
-				 Constants.SMS_MOBILE_NUMBERS+mobileNumbers+
-				 Constants.CHAR_AMPERCENT+
-				 Constants.SMS_CONTENT+sendSMSDTO.getSmsText()+
-				 Constants.CHAR_AMPERCENT+
-				 Constants.SMS_URL_TAIL;
+		String URL = "";
+		try {
+			URL = Constants.SMS_URL_HEAD+
+					 Constants.CHAR_AMPERCENT+
+					 Constants.SMS_MOBILE_NUMBERS+mobileNumbers+
+					 Constants.CHAR_AMPERCENT+
+					 Constants.SMS_CONTENT+URLEncoder.encode(sendSMSDTO.getSmsText(),"UTF-8")+
+					 Constants.CHAR_AMPERCENT+
+					 Constants.SMS_URL_TAIL;
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		return URL;
 	}
 }

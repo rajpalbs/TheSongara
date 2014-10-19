@@ -20,7 +20,7 @@ create table user_account(
 )Engine=InnoDB;
 
 insert into user_account values(1,"rajpal","songara","SONGARA RAJPALSINH BHIKHUSINH","1986-08-11",true,"+91-9687053542","+91-9426721546","rajpal.619@gmail.com","vadodara",0,"I Am Rajpals - The Rockstra."); 
-insert into user_account values(2,"yuvi","songara","SONGARA YAJUVENDRASINH BHIKHUSINH","1989-01-11",true,"+91-9427377656","+91-9426721546","yuvi.songara@gmail.com","vadodara",0,"PAPPUUU.");
+insert into user_account values(2,"yuvi","songara","SONGARA YAJUVENDRASINH BHIKHUSINH","1989-11-11",true,"+91-9427377656","+91-9426721546","yuvi.songara@gmail.com","vadodara",0,"PAPPUUU.");
 insert into user_account values(3,"GUEST","GU35T","GUEST",null,false,null,null,null,null,0,"I'M GUEST");
 
 

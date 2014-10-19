@@ -58,6 +58,7 @@ public class UserAccountService implements IUserAccountService {
 		userAccount.setAddress(localAddress);
 		userAccount.setAboutMe(aboutMe);
 		userAccountDAO.save(userAccount);
+		userRoleService.saveUserRole(UserRoleEnum.USER, userAccount);
 	}
 
 	@Override

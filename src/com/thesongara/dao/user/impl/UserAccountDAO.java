@@ -19,7 +19,6 @@ public class UserAccountDAO extends BaseDAO<UserAccount>  implements IUserAccoun
 		//LOAD ONLY NON GUEST USER
 		criteria.createAlias("userRole", "userRole").
 				 add(Restrictions.ne("userRole.roleEnum", UserRoleEnum.GUEST));
-		
 		return findByCriteria(criteria);
 	}
 }
